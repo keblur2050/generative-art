@@ -1,0 +1,38 @@
+let img; //Creates and names a new variable. A variable is a container for a value.
+
+Variables that are declared with let will have block-scope. This means that the variable only exists within the block that it is created within.
+
+From the MDN entry: Declares a block scope local variable, optionally initializing it to a value.
+
+//Called directly before setup(), the preload() function is used to handle asynchronous loading of external files in a blocking way. If a preload function is defined, setup() will wait until any load calls within have finished. Nothing besides load calls (loadImage, loadJSON, loadFont, loadStrings, etc.) should be inside the preload function. If asynchronous loading is preferred, the load methods can instead be called in setup() or anywhere else with the use of a callback parameter.
+
+By default the text "loading..." will be displayed. To make your own loading page, include an HTML element with id "p5_loading" in your page.
+
+function preload(){
+  img = loadImage('assets/amanda_ho_cherry_picker.jpg'); //Loads an <img> element in the DOM with given src and alternate text.
+  
+}
+
+//only run once
+function setup() {
+  
+  createCanvas(img.width, img.height); 
+  //access the pixel information of the image
+  //for creates a loop that is useful for executing one section of code multiple times. A 'for loop' consists of three different expressions inside of a parenthesis, all of which are optional.These expressions are used to control the number of times the loop is run.The first expression is a statement that is used to set the initial state for the loop.The second expression is a condition that you would like to check before each loop. If this expression returns false then the loop will exit.The third expression is executed at the end of each loop. These expression are separated by ; (semi-colon).In case of an empty expression, only a semi-colon is written.
+The code inside of the loop body (in between the curly braces) is executed between the evaluation of the second and third expression.
+As with any loop, it is important to ensure that the loop can 'exit', or that the test condition will eventually evaluate to false. The test condition with a for loop is the second expression detailed above. Ensuring that this expression can eventually become false ensures that your loop doesn't attempt to run an infinite amount of times, which can crash your browser.
+From the MDN entry: Creates a loop that executes a specified statement until the test condition evaluates to false. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.
+  for(let col = 0; col< img.width; col+=10){ //The addition assignment operator (+=) adds the value of the right operand to a variable and assigns the result to the variable. The types of the two operands determine the behavior of the addition assignment operator. Addition or concatenation is possible.
+   for(let row = 0; row < img.height; row+=10){ //The less than operator (<) returns true if the left operand is less than the right operand, and false otherwise.
+     let c = img.get(col,row); // Get a region of pixels from an image.
+      stroke(color(c)); //point color is variable c which gets a region of pixels form an image
+      strokeWeight(10); //size of the point is 10 pixels
+      point(col, row); //Draws a point, a coordinate in space at the dimension of one pixel. The first parameter is the horizontal value for the point, the second param is the vertical value for the point.
+    }
+  }
+}
+
+//loops forever
+// function draw() {
+//   background(220);
+// }

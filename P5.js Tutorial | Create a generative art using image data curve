@@ -14,9 +14,10 @@ function setup() {
      let xPos = col;
       let yPos = row;
       let c = img.get(xPos,yPos);
+      //The push() function saves the current drawing style settings and transformations, while pop() restores these settings. 
       push();
-      translate(xPos, yPos);
-      rotate(radians(random(360)));
+      translate(xPos, yPos); //Specifies an amount to displace objects within the display window. The x parameter specifies left/right translation, the y parameter specifies up/down translation.
+      rotate(radians(random(360))); //Rotates a shape by the amount specified by the angle parameter. This function accounts for angleMode, so angles can be entered in either RADIANS or DEGREES.
       noFill();
       stroke(color(c));
       strokeWeight(random(5));
